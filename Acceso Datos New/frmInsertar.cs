@@ -43,5 +43,10 @@ namespace Acceso_Datos_New
         {
 
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInsertarEmpleados));
-            dtpHireDate = new DateTimePicker();
+            dtpFecha = new DateTimePicker();
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
@@ -47,14 +47,15 @@
             cbIdPub = new ComboBox();
             cbIdTrabajador = new ComboBox();
             label9 = new Label();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
-            // dtpHireDate
+            // dtpFecha
             // 
-            dtpHireDate.Location = new Point(12, 373);
-            dtpHireDate.Name = "dtpHireDate";
-            dtpHireDate.Size = new Size(250, 27);
-            dtpHireDate.TabIndex = 35;
+            dtpFecha.Location = new Point(12, 373);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(250, 27);
+            dtpFecha.TabIndex = 35;
             // 
             // label8
             // 
@@ -176,9 +177,9 @@
             btnInsertar.BackgroundImage = (Image)resources.GetObject("btnInsertar.BackgroundImage");
             btnInsertar.BackgroundImageLayout = ImageLayout.Zoom;
             btnInsertar.Font = new Font("Segoe UI", 4.20000029F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInsertar.Location = new Point(377, 369);
+            btnInsertar.Location = new Point(353, 375);
             btnInsertar.Name = "btnInsertar";
-            btnInsertar.Size = new Size(124, 44);
+            btnInsertar.Size = new Size(90, 58);
             btnInsertar.TabIndex = 19;
             btnInsertar.UseVisualStyleBackColor = true;
             btnInsertar.Click += btnInsertar_Click;
@@ -186,6 +187,7 @@
             // cbIdPub
             // 
             cbIdPub.FormattingEnabled = true;
+            cbIdPub.Items.AddRange(new object[] { "New Moon Books", "Binnet & Hardley", "Algodata Infosystems", "Five Lakes Publishing", "Ramona Publishers", "Scootney Books", "Lucerne Publishing" });
             cbIdPub.Location = new Point(610, 191);
             cbIdPub.Name = "cbIdPub";
             cbIdPub.Size = new Size(151, 28);
@@ -195,6 +197,7 @@
             // cbIdTrabajador
             // 
             cbIdTrabajador.FormattingEnabled = true;
+            cbIdTrabajador.Items.AddRange(new object[] { "New Hire - Job not specified", "Chief Executive Officer", "Business Operations Manager", "Chief Financial Officier", "Publisher", "Managing Editor", "Marketing Manager", "Public Relations Manager", "Acquisitions Manager", "Productions Manager", "Operations Manager", "Editor", "Sales Representative", "Designer" });
             cbIdTrabajador.Location = new Point(610, 375);
             cbIdTrabajador.Name = "cbIdTrabajador";
             cbIdTrabajador.Size = new Size(151, 28);
@@ -211,6 +214,18 @@
             label9.TabIndex = 38;
             label9.Text = "Insertar Empleados";
             // 
+            // btnCancelar
+            // 
+            btnCancelar.BackgroundImage = (Image)resources.GetObject("btnCancelar.BackgroundImage");
+            btnCancelar.BackgroundImageLayout = ImageLayout.Zoom;
+            btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.Location = new Point(476, 373);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(85, 60);
+            btnCancelar.TabIndex = 42;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // FrmInsertarEmpleados
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -219,10 +234,11 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCancelar);
             Controls.Add(label9);
             Controls.Add(cbIdTrabajador);
             Controls.Add(cbIdPub);
-            Controls.Add(dtpHireDate);
+            Controls.Add(dtpFecha);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -238,14 +254,14 @@
             Controls.Add(txtId);
             Controls.Add(btnInsertar);
             Name = "FrmInsertarEmpleados";
-            Text = "FrmInsertarEmpleados";
+            Text = "Insertar Nuevo Empleado";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DateTimePicker dtpHireDate;
+        private DateTimePicker dtpFecha;
         private Label label8;
         private Label label7;
         private Label label6;
@@ -263,5 +279,6 @@
         private ComboBox cbIdPub;
         private ComboBox cbIdTrabajador;
         private Label label9;
+        private Button btnCancelar;
     }
 }

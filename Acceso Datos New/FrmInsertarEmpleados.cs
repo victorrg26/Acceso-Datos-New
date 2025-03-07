@@ -16,48 +16,75 @@ namespace Acceso_Datos_New
         public FrmInsertarEmpleados()
         {
             InitializeComponent();
-            LoadComboBoxes();
-
+            dtpFecha.MaxDate = DateTime.Now;
         }
-        private void LoadComboBoxes()
+        private void validarlvlJob()
         {
-            LoadComboBox("publishers", "pub_id", cbIdPub);
-            LoadComboBox("jobs", "job_id", cbIdTrabajador);
-        }
-
-        private void LoadComboBox(string tableName, string keyColumn, ComboBox comboBox)
-        {
-            DataSet ds = datos.Consulta($"SELECT {keyColumn} FROM {tableName}");
-            if (ds != null && ds.Tables.Count > 0)
+            string desc = cbIdTrabajador.SelectedItem.ToString();
+            switch (desc)
             {
-                comboBox.DataSource = ds.Tables[0];
-                comboBox.DisplayMember = keyColumn;
-                comboBox.ValueMember = keyColumn;
+                case "New Hire- Job not specified":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (10-10)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+
+                case "Chief Executive Officer":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (200-250)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Business Operations Manager":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (175-225)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Chief Financial Officier":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (175-250)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Publisher":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (150-250)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Managing Editor":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (140-225)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Marketing Manager":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (120-200)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Public Relations Manager":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (100-175)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Acquisitions Manager":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (75-175)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Productions Manager":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (75-165)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Operations Manager":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (75-150)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Editor":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (25-100)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Sales Representative":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (25-100)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case "Designer":
+                    MessageBox.Show("Error al elegir el nivel de trabajo. \n Rango para: " + desc + " (25-100)", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+
             }
         }
-
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            string id = txtId.Text;
-            string fname = txtFirst.Text;
-            string minit = txtMinit.Text;
-            string lname = txtLast.Text;
-            string jobid = cbIdTrabajador.SelectedValue.ToString();
-            string lvjob = txtLevel.Text;
-            string idpub = cbIdPub.SelectedValue.ToString();
-            string hiredate = dtpHireDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
-
             Datos datos = new Datos();
-            bool f = datos.comando("insert into employee(emp_id,fname,lname,minit,job_id,job_lvl,pub_id,hire_date)"
-                + "values ('" + id + "','" + fname + "','" + lname + "','" + minit + "','" + jobid + "','" + lvjob + "','" + idpub + "','" + hiredate + "');");
+            bool aggEmp = datos.comando("insert into employee values ('" + txtId.Text + "'" +
+                ",'" + txtFirst.Text.Replace("'", "''") + "','" + txtMinit.Text + "','" + txtLast.Text.Replace("'", "''") + "', (select job_id from jobs where job_desc ='" + cbIdTrabajador.SelectedItem.ToString() + "' )" +
+                ",'" + txtLevel.Text + "',(select pub_id from publishers where pub_name = '" + cbIdPub.SelectedItem.ToString() + "'),'" + dtpFecha.Value.Year + "-" + dtpFecha.Value.Month
+                + "-" + dtpFecha.Value.Day + "')");
 
-            if (f)
+            if (aggEmp)
             {
-                MessageBox.Show("Datos insertados", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Empleado agregado correctamente", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Error al insertar", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validarlvlJob();
             }
 
         }
@@ -70,6 +97,11 @@ namespace Acceso_Datos_New
         private void cbIdTrabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();   
         }
     }
 }

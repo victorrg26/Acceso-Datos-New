@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrnAutores));
             dgvAuthors = new DataGridView();
             btnInsertar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAuthors).BeginInit();
@@ -36,20 +37,22 @@
             // dgvAuthors
             // 
             dgvAuthors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAuthors.Location = new Point(-2, 42);
+            dgvAuthors.Location = new Point(-2, 58);
             dgvAuthors.Name = "dgvAuthors";
             dgvAuthors.RowHeadersWidth = 51;
-            dgvAuthors.Size = new Size(804, 407);
+            dgvAuthors.Size = new Size(804, 391);
             dgvAuthors.TabIndex = 0;
             dgvAuthors.CellContentClick += dgvAuthors_CellContentClick;
             // 
             // btnInsertar
             // 
+            btnInsertar.BackgroundImage = (Image)resources.GetObject("btnInsertar.BackgroundImage");
+            btnInsertar.BackgroundImageLayout = ImageLayout.Zoom;
+            btnInsertar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnInsertar.Location = new Point(684, 7);
             btnInsertar.Name = "btnInsertar";
-            btnInsertar.Size = new Size(94, 29);
+            btnInsertar.Size = new Size(94, 45);
             btnInsertar.TabIndex = 1;
-            btnInsertar.Text = "Insertar";
             btnInsertar.UseVisualStyleBackColor = true;
             btnInsertar.Click += btnInsertar_Click;
             // 
@@ -57,11 +60,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Bisque;
             ClientSize = new Size(800, 450);
             Controls.Add(btnInsertar);
             Controls.Add(dgvAuthors);
             Name = "FrnAutores";
-            Text = "FrnAutores";
+            Text = "Tabla de Autores";
             Activated += FrnAutores_Activated;
             Load += FrnAutores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAuthors).EndInit();

@@ -19,25 +19,24 @@ namespace Acceso_Datos_New
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            FrmActualizarEmpleados actualizaEmpleados = new FrmActualizarEmpleados(
-                   dataGridViewEmpleados[0, e.RowIndex].Value.ToString(),
-                   dataGridViewEmpleados[1, e.RowIndex].Value.ToString(),
-                   dataGridViewEmpleados[2, e.RowIndex].Value.ToString(),
-                   dataGridViewEmpleados[3, e.RowIndex].Value.ToString(),
-                   dataGridViewEmpleados[4, e.RowIndex].Value.ToString(),
-                   dataGridViewEmpleados[5, e.RowIndex].Value.ToString(),
-                   dataGridViewEmpleados[6, e.RowIndex].Value.ToString(),
-                   dataGridViewEmpleados[7, e.RowIndex].Value.ToString()
-               );
-            actualizaEmpleados.ShowDialog();
+            FrmActualizarEmpleados empleadoAct = new FrmActualizarEmpleados(dgvEmpleados[0, e.RowIndex].Value.ToString(),
+          dgvEmpleados[1, e.RowIndex].Value.ToString(), dgvEmpleados[3, e.RowIndex].Value.ToString(),
+          dgvEmpleados[2, e.RowIndex].Value.ToString(), dgvEmpleados[4, e.RowIndex].Value.ToString(),
+          dgvEmpleados[5, e.RowIndex].Value.ToString(), dgvEmpleados[6, e.RowIndex].Value.ToString(), dgvEmpleados[7, e.RowIndex].Value.ToString());
+
+            empleadoAct.Show();
+
+
         }
         private void actualizarGrid()
         {
             Datos datos = new Datos();
-            DataSet dS = datos.Consulta("select\r\nemp_id as 'ID',\r\nfname as 'Nombre',\r\nminit as 'Inicial Seg. Nombre',\r\nlname as 'Apellido',\r\njob_id as 'ID Trabajador',\r\njob_lvl as 'Nivel Trabajador',\r\npub_id as 'ID Publicador',\r\nhire_date as 'Fecha de Nacimiento'\r\nfrom employee;");
-            if (dS != null)
+            DataSet dataSet = datos.Consulta("select emp_id as ID , fname as [Frist Name], minit as Minit, lname as [Last Name], j.job_desc as [Job Description], job_lvl as [Job Level], pb.pub_name as [PUB Name], hire_date as [Hire date] from employee e , jobs j, publishers pb where j.job_id = e.job_id and e.pub_id = pb.pub_id");
+
+            if (dataSet != null)
             {
-                dataGridViewEmpleados.DataSource = dS.Tables[0];
+                dgvEmpleados.DataSource = dataSet.Tables[0];
+
             }
         }
         private void btnInsertar_Click(object sender, EventArgs e)

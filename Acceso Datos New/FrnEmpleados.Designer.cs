@@ -28,49 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrnEmpleados));
             btnInsertar = new Button();
-            dataGridViewEmpleados = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewEmpleados).BeginInit();
+            dgvEmpleados = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvEmpleados).BeginInit();
             SuspendLayout();
             // 
             // btnInsertar
             // 
-            btnInsertar.Location = new Point(654, 12);
+            btnInsertar.BackgroundImage = (Image)resources.GetObject("btnInsertar.BackgroundImage");
+            btnInsertar.BackgroundImageLayout = ImageLayout.Zoom;
+            btnInsertar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInsertar.Location = new Point(670, 12);
             btnInsertar.Name = "btnInsertar";
-            btnInsertar.Size = new Size(94, 29);
+            btnInsertar.Size = new Size(94, 43);
             btnInsertar.TabIndex = 0;
-            btnInsertar.Text = "Insertar";
             btnInsertar.UseVisualStyleBackColor = true;
             btnInsertar.Click += btnInsertar_Click;
             // 
-            // dataGridViewEmpleados
+            // dgvEmpleados
             // 
-            dataGridViewEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewEmpleados.Location = new Point(5, 61);
-            dataGridViewEmpleados.Name = "dataGridViewEmpleados";
-            dataGridViewEmpleados.RowHeadersWidth = 51;
-            dataGridViewEmpleados.Size = new Size(794, 392);
-            dataGridViewEmpleados.TabIndex = 1;
-            dataGridViewEmpleados.CellContentClick += dataGridView1_CellContentClick;
+            dgvEmpleados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmpleados.Location = new Point(5, 61);
+            dgvEmpleados.Name = "dgvEmpleados";
+            dgvEmpleados.RowHeadersWidth = 51;
+            dgvEmpleados.Size = new Size(794, 392);
+            dgvEmpleados.TabIndex = 1;
+            dgvEmpleados.CellContentClick += dataGridView1_CellContentClick;
             // 
             // FrnEmpleados
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Bisque;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridViewEmpleados);
+            Controls.Add(dgvEmpleados);
             Controls.Add(btnInsertar);
             Name = "FrnEmpleados";
-            Text = "FrnEmpleados";
+            Text = "Tabla de Empleados";
             Activated += FrnEmpleados_Activated;
             Load += FrnEmpleados_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewEmpleados).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmpleados).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button btnInsertar;
-        private DataGridView dataGridViewEmpleados;
+        private DataGridView dgvEmpleados;
     }
 }

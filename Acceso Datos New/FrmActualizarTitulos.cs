@@ -18,98 +18,74 @@ namespace Acceso_Datos_New
 {
     public partial class FrmActualizarTitulos : Form
     {
-        private Datos datos = new Datos();
-        public FrmActualizarTitulos(string id, string title, string type, string pub_id, string price, string advance, string royalty, string ytd_sales, string notes, string pubdate)
+     
+        public FrmActualizarTitulos(string id, string titulo, string tipo,
+            string pubId, string precio, string anticipo, string regalias,
+            string ventas, string notas, string fechaPub)
         {
             InitializeComponent();
-            LoadComboBoxes();
-
             txtId.Text = id;
-            txtName.Text = title;
-            txtType.Text = type;
-            cbPubId.SelectedValue = pub_id;
-            txtPrice.Text = price;
-            txtAdvanced.Text = advance;
-            txtRoyalty.Text = royalty;
-            txtYearSales.Text = ytd_sales;
-            rtbNotes.Text = notes;
-            dtpDate.Text = pubdate;
-        }
+            txtName.Text = titulo;
+            txtType.Text = tipo;
+            txtPrice.Text = precio;
+            txtAdvanced.Text = anticipo;
+            txtRoyalty.Text = regalias;
+            txtYearSales.Text = ventas;
+            rtbNotes.Text = notas;
+            dtpDate.Text = fechaPub;
 
-        private void LoadComboBoxes()
-        {
-            LoadComboBox("publishers", "pub_id", cbPubId);
-        }
-
-        private void LoadComboBox(string tableName, string keyColumn, ComboBox comboBox)
-        {
-            DataSet ds = datos.Consulta($"SELECT {keyColumn} FROM {tableName}");
-            if (ds != null && ds.Tables.Count > 0)
+            for (int i = 0; i < cbPubId.Items.Count; i++)
             {
-                comboBox.DataSource = ds.Tables[0];
-                comboBox.DisplayMember = keyColumn;
-                comboBox.ValueMember = keyColumn;
+                if (cbPubId.Items[i].ToString() == pubId)
+                {
+                    cbPubId.SelectedIndex = i;
+                }
             }
         }
+
+    
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            string id = txtId.Text;
-            string name = txtName.Text;
-            string type = txtType.Text;
-            string pub_id = cbPubId.SelectedValue?.ToString();
-            string price = txtPrice.Text;
-            string advance = txtAdvanced.Text;
-            string ytd_sales = txtYearSales.Text;
-            string notes = rtbNotes.Text;
-            string pubdate = dtpDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
-            string royalty = txtRoyalty.Text;
-
-            if (string.IsNullOrEmpty(pub_id))
+            try
             {
-                MessageBox.Show("Seleccione un Publisher ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                Datos datos = new Datos();
+                bool actTitulo = datos.comando("  update titles set title = '" + txtName.Text.Replace("'", "''") +
+                "', type = '" + txtType.Text.Replace("'", "''") + "', pub_id = (select pub_id from publishers where pub_name = '" + cbPubId.SelectedItem.ToString() + "'), price =" + double.Parse(txtPrice.Text == "" ? "0" : txtPrice.Text) + ", advance =" + double.Parse(txtAdvanced.Text == "" ? "0" : txtAdvanced.Text) +
+                ", royalty = " + double.Parse(txtRoyalty.Text == "" ? "0" : txtRoyalty.Text) + ",ytd_sales = " + int.Parse(txtYearSales.Text == "" ? "0" : txtYearSales.Text) +
+                ", notes= '" + rtbNotes.Text.Replace("'", "''") + "', pubdate='" + dtpDate.Value.Year + "-" + dtpDate.Value.Month + "-" + dtpDate.Value.Day +
+                "'  where title_id = '" + txtId.Text + "'");
+
+                if (actTitulo)
+                {
+                    MessageBox.Show("Titulo Actualizado Correctamente", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un problema al actualizar el sistema", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-
-            Datos datos = new Datos();
-            bool f = datos.comando($"UPDATE titles SET " +
-               $"title='{name}', " +
-               $"type='{type}', " +
-               $"pub_id='{pub_id}', " +
-               $"price={price}, " +
-               $"advance={advance}, " +
-               $"royalty={royalty}, " +
-               $"ytd_sales={ytd_sales}, " +
-               $"notes='{notes}', " +
-               $"pubdate='{pubdate}' " +
-               $"WHERE title_id='{id}'");
-
-            if (f)
+            catch (FormatException ex)
             {
-                MessageBox.Show("Se han actualizado los datos", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Error al actualizar los datos", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                MessageBox.Show("Haz introducido un valor no valido en los valores numericos", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Desea eliminar?", "Sistema", MessageBoxButtons.YesNo);
-            if (res == DialogResult.Yes)
+            Datos datos = new Datos();
+            bool borrarTit = datos.comando(" delete from titles where title_id = '" + txtId.Text + "'");
+
+            if (borrarTit)
             {
-                Datos datos = new Datos();
-                string id = txtId.Text;
-                bool f = datos.comando($"DELETE FROM TITLES WHERE title_id='{id}'");
-                if (f)
-                {
-                    MessageBox.Show("Registro eliminado", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Error al eliminar el registro", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Titulo borrado correctamente", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio un error al borrar el titulo", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

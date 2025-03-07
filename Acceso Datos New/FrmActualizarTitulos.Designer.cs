@@ -190,7 +190,7 @@
             // 
             btnEliminar.BackgroundImage = (Image)resources.GetObject("btnEliminar.BackgroundImage");
             btnEliminar.BackgroundImageLayout = ImageLayout.Zoom;
-            btnEliminar.Location = new Point(349, 394);
+            btnEliminar.Location = new Point(347, 381);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(140, 57);
             btnEliminar.TabIndex = 19;
@@ -201,7 +201,7 @@
             // 
             btnActualizar.BackgroundImage = (Image)resources.GetObject("btnActualizar.BackgroundImage");
             btnActualizar.BackgroundImageLayout = ImageLayout.Zoom;
-            btnActualizar.Location = new Point(56, 394);
+            btnActualizar.Location = new Point(57, 381);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(125, 57);
             btnActualizar.TabIndex = 18;
@@ -237,7 +237,7 @@
             // 
             // rtbNotes
             // 
-            rtbNotes.Location = new Point(511, 318);
+            rtbNotes.Location = new Point(513, 318);
             rtbNotes.Name = "rtbNotes";
             rtbNotes.Size = new Size(249, 120);
             rtbNotes.TabIndex = 39;
@@ -256,6 +256,7 @@
             // cbPubId
             // 
             cbPubId.FormattingEnabled = true;
+            cbPubId.Items.AddRange(new object[] { "New Moon Books", "Binnet & Hardley", "Algodata Infosystems", "Five Lakes Publishing", "Ramona Publishers", "GGG&G", "Scootney Books", "Lucerne Publishing" });
             cbPubId.Location = new Point(578, 147);
             cbPubId.Name = "cbPubId";
             cbPubId.Size = new Size(151, 28);
@@ -265,7 +266,7 @@
             // 
             btnCancelar.BackgroundImage = (Image)resources.GetObject("btnCancelar.BackgroundImage");
             btnCancelar.BackgroundImageLayout = ImageLayout.Zoom;
-            btnCancelar.Location = new Point(213, 395);
+            btnCancelar.Location = new Point(213, 382);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(107, 56);
             btnCancelar.TabIndex = 42;
@@ -303,7 +304,7 @@
             Controls.Add(btnEliminar);
             Controls.Add(btnActualizar);
             Name = "FrmActualizarTitulos";
-            Text = "FrmActualizarTitulos";
+            Text = "Actualizar Titulos";
             ResumeLayout(false);
             PerformLayout();
         }

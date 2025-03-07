@@ -271,7 +271,7 @@
             Controls.Add(txtFirst);
             Controls.Add(txtId);
             Name = "frmActualizaAutor";
-            Text = "frmActualizaAutor";
+            Text = "Actualiza Autor";
             ResumeLayout(false);
             PerformLayout();
         }

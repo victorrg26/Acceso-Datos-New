@@ -19,27 +19,22 @@ namespace Acceso_Datos_New
         private void actualizarGrid()
         {
             Datos datos = new Datos();
-            DataSet dataSet = datos.Consulta("select title_id as 'ID',\r\ntitle as 'Titulo',\r\ntype as 'Genero',\r\npub_id as 'Editorial',\r\nprice as 'Precio',\r\nadvance as 'Anticipo',\r\nroyalty as 'Regalias',\r\nytd_sales as 'Ventas anuales',\r\nnotes as 'Descripcion',\r\npubdate as 'Fecha de Lanzamiento'\r\nfrom titles;");
+            DataSet dataSet = datos.Consulta("Select title_id as ID,title as [Title], type as [Type], pb.pub_name as PubNombre,price as Price,advance as Advance ,royalty as Royalty,ytd_sales as Sales,notes as Notes,pubdate as PubDate  From Titles t, publishers pb where t.pub_id = pb.pub_id");
+
             if (dataSet != null)
             {
-                dataGridViewTitulos.DataSource = dataSet.Tables[0];
+                dgvTitulos.DataSource = dataSet.Tables[0];
             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            FrmActualizarTitulos actualizaTitulos = new FrmActualizarTitulos(
-               dataGridViewTitulos[0, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[1, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[2, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[3, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[4, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[5, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[6, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[7, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[8, e.RowIndex].Value.ToString(),
-               dataGridViewTitulos[9, e.RowIndex].Value.ToString()
-           );
-            actualizaTitulos.ShowDialog();
+            FrmActualizarTitulos titulo = new FrmActualizarTitulos(dgvTitulos[0, e.RowIndex].Value.ToString(),
+            dgvTitulos[1, e.RowIndex].Value.ToString(), dgvTitulos[2, e.RowIndex].Value.ToString(), dgvTitulos[3, e.RowIndex].Value.ToString(),
+            dgvTitulos[4, e.RowIndex].Value.ToString(), dgvTitulos[5, e.RowIndex].Value.ToString(),
+            dgvTitulos[6, e.RowIndex].Value.ToString(), dgvTitulos[7, e.RowIndex].Value.ToString(),
+            dgvTitulos[8, e.RowIndex].Value.ToString(), dgvTitulos[9, e.RowIndex].Value.ToString());
+
+            titulo.Show();
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)

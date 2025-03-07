@@ -43,7 +43,7 @@ namespace Acceso_Datos_New
             string id = txtId.Text;
             string name = txtName.Text;
             string type = txtType.Text;
-            string pub_id = cbPubId.SelectedValue?.ToString(); 
+            string pub_id = cbPubId.SelectedValue?.ToString();
             string price = txtPrice.Text;
             string advance = txtAdvanced.Text;
             string royalty = txtRoyalty.Text;
@@ -69,6 +69,11 @@ namespace Acceso_Datos_New
             {
                 MessageBox.Show("Error al insertar los datos", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -44,9 +44,9 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            dtpHireDate = new DateTimePicker();
+            dtpFecha = new DateTimePicker();
             label9 = new Label();
-            cbIDTrabajador = new ComboBox();
+            cbIdTrabajador = new ComboBox();
             cbIdPub = new ComboBox();
             btnCancelar = new Button();
             SuspendLayout();
@@ -188,13 +188,13 @@
             label8.TabIndex = 16;
             label8.Text = "Fecha de nacimiento";
             // 
-            // dtpHireDate
+            // dtpFecha
             // 
-            dtpHireDate.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dtpHireDate.Location = new Point(228, 325);
-            dtpHireDate.Name = "dtpHireDate";
-            dtpHireDate.Size = new Size(335, 31);
-            dtpHireDate.TabIndex = 17;
+            dtpFecha.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dtpFecha.Location = new Point(228, 325);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(335, 31);
+            dtpFecha.TabIndex = 17;
             // 
             // label9
             // 
@@ -206,18 +206,20 @@
             label9.TabIndex = 18;
             label9.Text = "Empleados Actualizar";
             // 
-            // cbIDTrabajador
+            // cbIdTrabajador
             // 
-            cbIDTrabajador.FormattingEnabled = true;
-            cbIDTrabajador.Location = new Point(202, 246);
-            cbIDTrabajador.Name = "cbIDTrabajador";
-            cbIDTrabajador.Size = new Size(151, 28);
-            cbIDTrabajador.TabIndex = 19;
-            cbIDTrabajador.SelectedIndexChanged += cbIDTrabajador_SelectedIndexChanged;
+            cbIdTrabajador.FormattingEnabled = true;
+            cbIdTrabajador.Items.AddRange(new object[] { "New Hire - Job not specified", "Chief Executive Officer", "Business Operations Manager", "Chief Financial Officier", "Publisher", "Managing Editor", "Marketing Manager", "Public Relations Manager", "Acquisitions Manager", "Productions Manager", "Operations Manager", "Editor", "Sales Representative", "Designer" });
+            cbIdTrabajador.Location = new Point(202, 246);
+            cbIdTrabajador.Name = "cbIdTrabajador";
+            cbIdTrabajador.Size = new Size(151, 28);
+            cbIdTrabajador.TabIndex = 19;
+            cbIdTrabajador.SelectedIndexChanged += cbIDTrabajador_SelectedIndexChanged;
             // 
             // cbIdPub
             // 
             cbIdPub.FormattingEnabled = true;
+            cbIdPub.Items.AddRange(new object[] { "New Moon Books", "", "Binnet & Hardley", "", "Algodata Infosystems", "", "Five Lakes Publishing", "", "Ramona Publishers", "", "Scootney Books", "", "Lucerne Publishing" });
             cbIdPub.Location = new Point(637, 222);
             cbIdPub.Name = "cbIdPub";
             cbIdPub.Size = new Size(151, 28);
@@ -244,9 +246,9 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnCancelar);
             Controls.Add(cbIdPub);
-            Controls.Add(cbIDTrabajador);
+            Controls.Add(cbIdTrabajador);
             Controls.Add(label9);
-            Controls.Add(dtpHireDate);
+            Controls.Add(dtpFecha);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -263,7 +265,7 @@
             Controls.Add(btnEliminar);
             Controls.Add(btnActualizar);
             Name = "FrmActualizarEmpleados";
-            Text = "FrmActualizarEmpleados";
+            Text = "Actualizar Empleados";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -285,9 +287,9 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private DateTimePicker dtpHireDate;
+        private DateTimePicker dtpFecha;
         private Label label9;
-        private ComboBox cbIDTrabajador;
+        private ComboBox cbIdTrabajador;
         private ComboBox cbIdPub;
         private Button btnCancelar;
     }

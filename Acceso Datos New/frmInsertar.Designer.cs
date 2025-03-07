@@ -48,6 +48,7 @@
             txtFirst = new TextBox();
             txtId = new TextBox();
             label9 = new Label();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
             // chkContract
@@ -146,7 +147,7 @@
             btnInsertar.BackgroundImage = (Image)resources.GetObject("btnInsertar.BackgroundImage");
             btnInsertar.BackgroundImageLayout = ImageLayout.Zoom;
             btnInsertar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInsertar.Location = new Point(498, 366);
+            btnInsertar.Location = new Point(305, 366);
             btnInsertar.Name = "btnInsertar";
             btnInsertar.Size = new Size(101, 60);
             btnInsertar.TabIndex = 29;
@@ -219,12 +220,25 @@
             label9.TabIndex = 40;
             label9.Text = "Insertar Autores";
             // 
+            // btnCancelar
+            // 
+            btnCancelar.BackgroundImage = (Image)resources.GetObject("btnCancelar.BackgroundImage");
+            btnCancelar.BackgroundImageLayout = ImageLayout.Zoom;
+            btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.Location = new Point(514, 366);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(85, 60);
+            btnCancelar.TabIndex = 41;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // frmInsertar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCancelar);
             Controls.Add(label9);
             Controls.Add(chkContract);
             Controls.Add(label8);
@@ -245,7 +259,7 @@
             Controls.Add(txtFirst);
             Controls.Add(txtId);
             Name = "frmInsertar";
-            Text = "frmInsertar";
+            Text = "Insertar Nuevo Autor";
             Load += frmInsertar_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -272,5 +286,6 @@
         private TextBox txtFirst;
         private TextBox txtId;
         private Label label9;
+        private Button btnCancelar;
     }
 }

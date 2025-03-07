@@ -28,49 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTitulos));
             btnInsertar = new Button();
-            dataGridViewTitulos = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTitulos).BeginInit();
+            dgvTitulos = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvTitulos).BeginInit();
             SuspendLayout();
             // 
             // btnInsertar
             // 
-            btnInsertar.Location = new Point(666, 12);
+            btnInsertar.BackgroundImage = (Image)resources.GetObject("btnInsertar.BackgroundImage");
+            btnInsertar.BackgroundImageLayout = ImageLayout.Zoom;
+            btnInsertar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInsertar.Location = new Point(666, 7);
             btnInsertar.Name = "btnInsertar";
-            btnInsertar.Size = new Size(94, 29);
+            btnInsertar.Size = new Size(94, 44);
             btnInsertar.TabIndex = 0;
-            btnInsertar.Text = "Insertar";
             btnInsertar.UseVisualStyleBackColor = true;
             btnInsertar.Click += btnInsertar_Click;
             // 
-            // dataGridViewTitulos
+            // dgvTitulos
             // 
-            dataGridViewTitulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTitulos.Location = new Point(2, 47);
-            dataGridViewTitulos.Name = "dataGridViewTitulos";
-            dataGridViewTitulos.RowHeadersWidth = 51;
-            dataGridViewTitulos.Size = new Size(798, 405);
-            dataGridViewTitulos.TabIndex = 1;
-            dataGridViewTitulos.CellContentClick += dataGridView1_CellContentClick;
+            dgvTitulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTitulos.Location = new Point(2, 57);
+            dgvTitulos.Name = "dgvTitulos";
+            dgvTitulos.RowHeadersWidth = 51;
+            dgvTitulos.Size = new Size(798, 395);
+            dgvTitulos.TabIndex = 1;
+            dgvTitulos.CellContentClick += dataGridView1_CellContentClick;
             // 
             // FrmTitulos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Bisque;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridViewTitulos);
+            Controls.Add(dgvTitulos);
             Controls.Add(btnInsertar);
             Name = "FrmTitulos";
-            Text = "FrmTitulos";
+            Text = "Tabla de Titulos";
             Activated += FrmTitulos_Activated;
             Load += FrmTitulos_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTitulos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTitulos).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button btnInsertar;
-        private DataGridView dataGridViewTitulos;
+        private DataGridView dgvTitulos;
     }
 }

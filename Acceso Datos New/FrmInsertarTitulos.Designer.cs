@@ -51,6 +51,7 @@
             btnInsertar = new Button();
             label11 = new Label();
             cbPubId = new ComboBox();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
             // rtbNotes
@@ -231,9 +232,9 @@
             btnInsertar.BackgroundImage = (Image)resources.GetObject("btnInsertar.BackgroundImage");
             btnInsertar.BackgroundImageLayout = ImageLayout.Zoom;
             btnInsertar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInsertar.Location = new Point(213, 379);
+            btnInsertar.Location = new Point(219, 374);
             btnInsertar.Name = "btnInsertar";
-            btnInsertar.Size = new Size(96, 50);
+            btnInsertar.Size = new Size(90, 60);
             btnInsertar.TabIndex = 41;
             btnInsertar.UseVisualStyleBackColor = true;
             btnInsertar.Click += btnInsertar_Click;
@@ -257,12 +258,25 @@
             cbPubId.Size = new Size(151, 28);
             cbPubId.TabIndex = 63;
             // 
+            // btnCancelar
+            // 
+            btnCancelar.BackgroundImage = (Image)resources.GetObject("btnCancelar.BackgroundImage");
+            btnCancelar.BackgroundImageLayout = ImageLayout.Zoom;
+            btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCancelar.Location = new Point(356, 374);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(85, 60);
+            btnCancelar.TabIndex = 64;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // FrmInsertarTitulos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightCyan;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCancelar);
             Controls.Add(cbPubId);
             Controls.Add(label11);
             Controls.Add(rtbNotes);
@@ -286,7 +300,7 @@
             Controls.Add(txtId);
             Controls.Add(btnInsertar);
             Name = "FrmInsertarTitulos";
-            Text = "FrmInsertarTitulos";
+            Text = "Insertar Nuevio Titulo";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -315,5 +329,6 @@
         private Button btnInsertar;
         private Label label11;
         private ComboBox cbPubId;
+        private Button btnCancelar;
     }
 }

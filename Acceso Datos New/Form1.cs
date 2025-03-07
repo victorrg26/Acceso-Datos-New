@@ -25,5 +25,10 @@ namespace Acceso_Datos_New
             FrmTitulos Titulos = new FrmTitulos();
             Titulos.Show();
         }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
