@@ -46,7 +46,7 @@ namespace Acceso_Datos_New
 
 
         }
-        private void validarlvlJob()
+        private void validarNivel()
         {
             string desc = cbIdTrabajador.SelectedItem.ToString();
             switch (desc)
@@ -118,7 +118,7 @@ namespace Acceso_Datos_New
             else
             {
                 //MessageBox.Show("Ocurrio un error al actualizar datos", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                validarlvlJob();
+                validarNivel();
 
             }
         }

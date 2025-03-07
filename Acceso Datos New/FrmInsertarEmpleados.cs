@@ -18,7 +18,7 @@ namespace Acceso_Datos_New
             InitializeComponent();
             dtpFecha.MaxDate = DateTime.Now;
         }
-        private void validarlvlJob()
+        private void validarNivel()
         {
             string desc = cbIdTrabajador.SelectedItem.ToString();
             switch (desc)
@@ -84,7 +84,7 @@ namespace Acceso_Datos_New
             }
             else
             {
-                validarlvlJob();
+                validarNivel();
             }
 
         }
