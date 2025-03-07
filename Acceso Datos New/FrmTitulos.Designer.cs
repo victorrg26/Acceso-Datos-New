@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTitulos));
             btnInsertar = new Button();
             dgvTitulos = new DataGridView();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTitulos).BeginInit();
             SuspendLayout();
             // 
@@ -39,7 +40,7 @@
             btnInsertar.BackgroundImage = (Image)resources.GetObject("btnInsertar.BackgroundImage");
             btnInsertar.BackgroundImageLayout = ImageLayout.Zoom;
             btnInsertar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInsertar.Location = new Point(666, 7);
+            btnInsertar.Location = new Point(502, 7);
             btnInsertar.Name = "btnInsertar";
             btnInsertar.Size = new Size(94, 44);
             btnInsertar.TabIndex = 0;
@@ -56,12 +57,24 @@
             dgvTitulos.TabIndex = 1;
             dgvTitulos.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // button1
+            // 
+            button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
+            button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.Location = new Point(646, 7);
+            button1.Name = "button1";
+            button1.Size = new Size(84, 44);
+            button1.TabIndex = 2;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FrmTitulos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Bisque;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(dgvTitulos);
             Controls.Add(btnInsertar);
             Name = "FrmTitulos";
@@ -76,5 +89,6 @@
 
         private Button btnInsertar;
         private DataGridView dgvTitulos;
+        private Button button1;
     }
 }

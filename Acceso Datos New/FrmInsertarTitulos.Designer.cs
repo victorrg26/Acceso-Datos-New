@@ -253,6 +253,7 @@
             // 
             cbPubId.BackColor = SystemColors.InactiveCaption;
             cbPubId.FormattingEnabled = true;
+            cbPubId.Items.AddRange(new object[] { "New Moon Books", "Binnet & Hardley", "Algodata Infosystems", "Five Lakes Publishing", "Ramona Publishers", "GGG&G", "Scootney Books", "Lucerne Publishing" });
             cbPubId.Location = new Point(530, 145);
             cbPubId.Name = "cbPubId";
             cbPubId.Size = new Size(151, 28);

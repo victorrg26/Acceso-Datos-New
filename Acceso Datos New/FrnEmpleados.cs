@@ -41,7 +41,7 @@ namespace Acceso_Datos_New
         }
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-           FrmInsertarEmpleados InsE = new FrmInsertarEmpleados();
+            FrmInsertarEmpleados InsE = new FrmInsertarEmpleados();
             InsE.ShowDialog();
         }
 
@@ -53,6 +53,23 @@ namespace Acceso_Datos_New
         private void FrnEmpleados_Activated(object sender, EventArgs e)
         {
             actualizarGrid();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 menu = Application.OpenForms["Form1"] as Form1;
+
+            if (menu != null)
+            {
+                menu.Show();  
+                this.Close();  
+            }
+            else
+            {
+                menu = new Form1();
+                menu.Show();
+                this.Close();
+            }
         }
     }
 }

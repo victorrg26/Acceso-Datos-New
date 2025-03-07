@@ -51,7 +51,25 @@ namespace Acceso_Datos_New
         private void FrmTitulos_Activated(object sender, EventArgs e)
         {
             actualizarGrid();
-        
-    }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            Form1 menu = Application.OpenForms["Form1"] as Form1;
+
+            if (menu != null)
+            {
+                menu.Show();  
+                this.Close();  
+            }
+            else
+            {
+                menu = new Form1();
+                menu.Show();
+                this.Close();
+            }
+        }
     }
 }

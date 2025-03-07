@@ -19,55 +19,35 @@ namespace Acceso_Datos_New
         public FrmInsertarTitulos()
         {
             InitializeComponent();
-            LoadComboBoxes();
+      
 
         }
-        private void LoadComboBoxes()
-        {
-            LoadComboBox("publishers", "pub_id", cbPubId);
-        }
-
-        private void LoadComboBox(string tableName, string keyColumn, ComboBox comboBox)
-        {
-            DataSet ds = datos.Consulta($"SELECT {keyColumn} FROM {tableName}");
-            if (ds != null && ds.Tables.Count > 0)
-            {
-                comboBox.DataSource = ds.Tables[0];
-                comboBox.DisplayMember = keyColumn;
-                comboBox.ValueMember = keyColumn;
-            }
-        }
+       
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            string id = txtId.Text;
-            string name = txtName.Text;
-            string type = txtType.Text;
-            string pub_id = cbPubId.SelectedValue?.ToString();
-            string price = txtPrice.Text;
-            string advance = txtAdvanced.Text;
-            string royalty = txtRoyalty.Text;
-            string ytd_sales = txtYearSales.Text;
-            string notes = rtbNotes.Text;
-            string date = dtpDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
-
-            if (string.IsNullOrEmpty(pub_id))
+            try
             {
-                MessageBox.Show("Seleccione un Publisher ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                Datos datos = new Datos();
+                bool aggTitulo = datos.comando("insert into titles values('" +
+                "" + txtId.Text.Replace("'", "''") + "', '" + txtName.Text.Replace("'", "''") + "', '" + txtType.Text.Replace("'", "''") + "', (select pub_id from publishers where pub_name ='" +
+                "" + cbPubId.SelectedItem.ToString() + "')," + double.Parse(txtPrice.Text) + "," + double.Parse(txtAdvanced.Text) +
+                "," + double.Parse(txtRoyalty.Text) + "," + int.Parse(txtYearSales.Text) + ", '" + rtbNotes.Text.Replace("'", "''") + "'" +
+                ", '" + dtpDate.Value.Year + "-" + dtpDate.Value.Month + "-" + dtpDate.Value.Day + "')");
+
+                if (aggTitulo)
+                {
+                    MessageBox.Show("Libro agregado correctamente", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un error al agregar el libro", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-
-            Datos datos = new Datos();
-            bool f = datos.comando($"INSERT INTO titles (title_id, title, type, pub_id, price, advance, royalty, ytd_sales, notes, pubdate) VALUES " +
-                $"('{id}', '{name}', '{type}', '{pub_id}', '{price}', '{advance}', '{royalty}', '{ytd_sales}', '{notes}', '{date}')");
-
-            if (f)
+            catch (FormatException ex)
             {
-                MessageBox.Show("Se han insertado los datos", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Error al insertar los datos", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Valores no esperados\nAsegurse de no haber introducido letras en vez de numeros", "SISTEMA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
